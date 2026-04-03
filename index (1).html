@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brew & Bloom Cafe - Gaya</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background-color: #fff8f0;
+      color: #3b2a1a;
+    }
+
+    /* navbar */
+    nav {
+      background-color: #3b2a1a;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      color: #f5c98a;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: #fff8f0;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav ul li a:hover {
+      color: #f5c98a;
+    }
+
+    /* hero */
+    #home {
+      background-color: #f5e6d0;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    #home h1 {
+      font-size: 42px;
+      color: #3b2a1a;
+      margin-bottom: 15px;
+    }
+
+    #home p {
+      font-size: 17px;
+      color: #6b4c2a;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .btn {
+      background-color: #3b2a1a;
+      color: #fff8f0;
+      padding: 12px 28px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+      margin: 5px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #6b4c2a;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid #3b2a1a;
+      color: #3b2a1a;
+    }
+
+    .btn-outline:hover {
+      background-color: #3b2a1a;
+      color: #fff8f0;
+    }
+
+    /* sections */
+    section {
+      padding: 60px 40px;
+    }
+
+    section h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #3b2a1a;
+    }
+
+    .underline {
+      width: 50px;
+      height: 3px;
+      background-color: #c8832a;
+      margin-bottom: 25px;
+    }
+
+    /* about */
+    #about {
+      background-color: #ffffff;
+    }
+
+    #about p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #4a3520;
+      max-width: 750px;
+      margin-bottom: 15px;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      background-color: #fff8f0;
+      border: 1px solid #e0c8a0;
+      padding: 20px 30px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 28px;
+      color: #c8832a;
+    }
+
+    .stat-box p {
+      font-size: 13px;
+      color: #6b4c2a;
+      margin: 0;
+    }
+
+    /* menu */
+    #menu {
+      background-color: #fff8f0;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 8px 20px;
+      border: 2px solid #3b2a1a;
+      background: transparent;
+      color: #3b2a1a;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+    }
+
+    .tab-btn.active {
+      background-color: #3b2a1a;
+      color: #fff8f0;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: #ffffff;
+      border: 1px solid #e0c8a0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .menu-item h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #3b2a1a;
+    }
+
+    .menu-item p {
+      font-size: 13px;
+      color: #7a5c3a;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #c8832a;
+      font-size: 15px;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* gallery */
+    #gallery {
+      background-color: #ffffff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .gallery-box {
+      background-color: #f5e6d0;
+      border-radius: 8px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      border: 1px solid #e0c8a0;
+    }
+
+    /* testimonials */
+    #testimonials {
+      background-color: #fff8f0;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: #ffffff;
+      border: 1px solid #e0c8a0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .stars {
+      color: #c8832a;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .testi-card p {
+      font-style: italic;
+      color: #4a3520;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .testi-card strong {
+      font-size: 13px;
+      color: #6b4c2a;
+    }
+
+    /* contact */
+    #contact {
+      background-color: #ffffff;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      font-size: 15px;
+      color: #4a3520;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .hours-table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .hours-table td {
+      padding: 7px 0;
+      font-size: 14px;
+      color: #4a3520;
+      border-bottom: 1px solid #e0c8a0;
+    }
+
+    .hours-table td:last-child {
+      font-weight: bold;
+      color: #c8832a;
+      text-align: right;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d0b898;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      background-color: #fff8f0;
+      color: #3b2a1a;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: #c8832a;
+    }
+
+    .contact-form textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .contact-form label {
+      font-size: 12px;
+      font-weight: bold;
+      color: #6b4c2a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+      display: block;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .submit-btn {
+      background-color: #3b2a1a;
+      color: #fff8f0;
+      padding: 12px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+    }
+
+    .submit-btn:hover {
+      background-color: #6b4c2a;
+    }
+
+    .success-msg {
+      display: none;
+      background-color: #eaf4ea;
+      border: 1px solid #7ab87a;
+      padding: 12px;
+      border-radius: 4px;
+      color: #2d6a2d;
+      font-size: 14px;
+    }
+
+    /* footer */
+    footer {
+      background-color: #3b2a1a;
+      color: #d0b898;
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    footer a {
+      color: #f5c98a;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      #home h1 { font-size: 28px; }
+      .about-stats { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 40px 20px; }
+      nav { padding: 12px 20px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <a href="#home" class="logo">Brew &amp; Bloom</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Home / Hero -->
+<section id="home">
+  <h1>☕ Brew &amp; Bloom Cafe</h1>
+  <p>A cozy little cafe in the heart of Gaya. We serve fresh coffee, homemade pastries, and a warm place to sit back and relax.</p>
+  <a href="#menu" class="btn">See Our Menu</a>
+  <a href="#contact" class="btn btn-outline">Book a Table</a>
+</section>
+
+<!-- About -->
+<section id="about">
+  <h2>About Us</h2>
+  <div class="underline"></div>
+  <p>Brew &amp; Bloom Cafe was started in 2018 by Priya and Arjun Sharma. What started as a small tea stall in Gaya slowly grew into a full cafe serving coffee, snacks, and baked goods.</p>
+  <p>We believe good coffee and good company go hand in hand. Our beans are sourced from Coorg and we bake fresh every morning. Every Friday evening, we also have a small live music session for our regulars.</p>
+
+  <div class="about-stats">
+    <div class="stat-box">
+      <h3>6+</h3>
+      <p>Years Running</p>
+    </div>
+    <div class="stat-box">
+      <h3>40+</h3>
+      <p>Menu Items</p>
+    </div>
+    <div class="stat-box">
+      <h3>500+</h3>
+      <p>Happy Customers</p>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+  <h2>Our Menu</h2>
+  <div class="underline"></div>
+
+  <div class="tab-buttons">
+    <button class="tab-btn active" onclick="showTab('coffee', this)">Coffee</button>
+    <button class="tab-btn" onclick="showTab('tea', this)">Tea</button>
+    <button class="tab-btn" onclick="showTab('food', this)">Snacks</button>
+  </div>
+
+  <div id="coffee" class="tab-panel active">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h4>Espresso</h4>
+        <p>Strong single-origin shot from Coorg.</p>
+        <span class="price">₹80</span>
+      </div>
+      <div class="menu-item">
+        <h4>Latte</h4>
+        <p>Smooth espresso with steamed milk and latte art.</p>
+        <span class="price">₹140</span>
+      </div>
+      <div class="menu-item">
+        <h4>Cold Brew</h4>
+        <p>Slow brewed 18 hours, served chilled over ice.</p>
+        <span class="price">₹150</span>
+      </div>
+      <div class="menu-item">
+        <h4>Mocha</h4>
+        <p>Espresso with dark chocolate and whipped cream.</p>
+        <span class="price">₹160</span>
+      </div>
+      <div class="menu-item">
+        <h4>Cappuccino</h4>
+        <p>Classic frothy cappuccino, just the way you like it.</p>
+        <span class="price">₹130</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="tea" class="tab-panel">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h4>Masala Chai</h4>
+        <p>Homemade chai with ginger, cardamom and tulsi.</p>
+        <span class="price">₹60</span>
+      </div>
+      <div class="menu-item">
+        <h4>Darjeeling Tea</h4>
+        <p>Light, floral first flush — best without milk.</p>
+        <span class="price">₹90</span>
+      </div>
+      <div class="menu-item">
+        <h4>Lemon Iced Tea</h4>
+        <p>Chilled tea with fresh lemon and honey.</p>
+        <span class="price">₹100</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="food" class="tab-panel">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h4>Butter Croissant</h4>
+        <p>Baked fresh every morning, golden and flaky.</p>
+        <span class="price">₹90</span>
+      </div>
+      <div class="menu-item">
+        <h4>Avocado Toast</h4>
+        <p>Sourdough bread with avocado and cherry tomatoes.</p>
+        <span class="price">₹190</span>
+      </div>
+      <div class="menu-item">
+        <h4>Carrot Cake</h4>
+        <p>Moist spiced cake with cream cheese frosting.</p>
+        <span class="price">₹140</span>
+      </div>
+      <div class="menu-item">
+        <h4>Oats Bowl</h4>
+        <p>Overnight oats with fruits, granola and honey.</p>
+        <span class="price">₹150</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="underline"></div>
+  <p style="color:#6b4c2a; margin-bottom:20px; font-size:15px;">A few glimpses of our cafe, food and events.</p>
+  <div class="gallery-grid">
+    <div class="gallery-box">☕</div>
+    <div class="gallery-box">🥐</div>
+    <div class="gallery-box">🌿</div>
+    <div class="gallery-box">🎶</div>
+    <div class="gallery-box">🍰</div>
+    <div class="gallery-box">🌸</div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <h2>What People Say</h2>
+  <div class="underline"></div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Honestly the best latte I've had in Gaya. The place has such a warm vibe and the staff are really friendly. My go-to every weekend."</p>
+      <strong>— Rohit S., Software Engineer</strong>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I come every Friday for the live music. The rose cappuccino and hazelnut tart combo is amazing. Highly recommend to anyone in Gaya."</p>
+      <strong>— Anjali M., College Student</strong>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I work from here sometimes. Great Wi-Fi, good coffee, and a calm atmosphere. Way better than sitting at home all day."</p>
+      <strong>— Pankaj K., Freelancer</strong>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="underline"></div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <p>📍 12, Main Road, Gaya<br>Gaya – 823001, Bihar</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉️ hello@brewandbloom.in</p>
+
+      <table class="hours-table">
+        <tr><td>Monday – Friday</td><td>7:00 AM – 9:00 PM</td></tr>
+        <tr><td>Saturday</td><td>7:00 AM – 10:30 PM</td></tr>
+        <tr><td>Sunday</td><td>8:00 AM – 8:00 PM</td></tr>
+      </table>
+      <p style="margin-top:12px; font-size:13px; color:#7a5c3a;">🎶 Live music every Friday from 7–9 PM</p>
+    </div>
+
+    <form class="contact-form" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" placeholder="+91 00000 00000">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Guests</label>
+          <select>
+            <option>1</option>
+            <option selected>2</option>
+            <option>3-4</option>
+            <option>5+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Any special request or question..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+      <div class="success-msg" id="successMsg">✅ Thanks! We will get back to you soon.</div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p><strong style="color:#f5c98a;">Brew &amp; Bloom Cafe</strong></p>
+  <p>12, Main Road, Gaya – 834001</p>
+  <p style="margin-top:10px;">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </p>
+  <p style="margin-top:15px; font-size:12px; color:#a08060;">© 2025 Brew &amp; Bloom Cafe. All rights reserved.</p>
+</footer>
+
+<script>
+  function showTab(tab, btn) {
+    // hide all panels
+    var panels = document.querySelectorAll('.tab-panel');
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].classList.remove('active');
+    }
+    // remove active from all buttons
+    var btns = document.querySelectorAll('.tab-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.remove('active');
+    }
+    // show selected
+    document.getElementById(tab).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
